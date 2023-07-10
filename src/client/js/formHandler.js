@@ -1,4 +1,5 @@
 import { updateUI } from './updateUI.js';
+import { checkForName } from './nameChecker.js';
 
 async function handleSubmit(event) {
     event.preventDefault()
