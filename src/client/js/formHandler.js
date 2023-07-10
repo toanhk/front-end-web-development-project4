@@ -6,12 +6,18 @@ async function handleSubmit(event) {
     // check what text was put into the form field
     let formText = document.getElementById('name').value
 
-    let apiData = await getAnalysis('http://localhost:8081/call', { data: formText })
-        .then(apiData => apiData.json())
-        .then(function (data) {
-            console.log(data);
-            updateUI(data)
-        })
+    if (checkForName(formText)) {
+        alert("Please input text")
+    }
+    else {
+        await getAnalysis('http://localhost:8081/call', { data: formText })
+            .then(apiData => apiData.json())
+            .then(function (data) {
+                console.log(data);
+                updateUI(data)
+            })
+    }
+
 }
 
 async function getAnalysis(url, userInput) {
